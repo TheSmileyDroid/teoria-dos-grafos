@@ -1,0 +1,12 @@
+Node:A[];
+Node:B[];
+Node:D[];
+Node:E[];
+Node:H[];
+Node:G[];
+Edge:A->B[label="" weight="1"];
+Edge:A->D[label="" weight="1"];
+Edge:B->D[label="" weight="1"];
+Edge:D->E[label="" weight="1"];
+Edge:E->B[label="" weight="1"];
+Edge:G->H[label="" weight="1"];
