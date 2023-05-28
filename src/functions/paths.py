@@ -2,14 +2,10 @@ from src.types.graph import Graph
 
 
 def shortest_path(graph: Graph, start: str, end: str) -> list[str]:
-    """
-    Finds the shortest path between two vertices in a graph.
-
-    :param graph: The graph to search through.
-    :param start: The starting vertex.
-    :param end: The ending vertex.
-    :return: A list of vertices in the shortest path.
-    """
+    if start not in graph.get_vertices():
+        raise ValueError(f"Start vertex '{start}' not found in graph")
+    if end not in graph.get_vertices():
+        raise ValueError(f"End vertex '{end}' not found in graph")
 
     visited = set()
     queue = [[start]]
@@ -22,9 +18,9 @@ def shortest_path(graph: Graph, start: str, end: str) -> list[str]:
             return path
 
         if vertex not in visited:
-            for adjacent in graph.get_vertex(vertex).get_adjacent():
+            for adjacent in graph.get_adjacent_vertices(vertex):
                 new_path = list(path)
-                new_path.append(adjacent.get_name())
+                new_path.append(adjacent)
                 queue.append(new_path)
 
             visited.add(vertex)
