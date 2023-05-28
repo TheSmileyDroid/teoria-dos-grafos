@@ -20,3 +20,15 @@ def load_graph_from_string(string: str) -> Graph:
             graph.add_edge(edge)
 
     return graph
+
+
+def load_graph_from_set(vertices: set[str], edges: set[tuple[str, str]]) -> Graph:
+    graph = Graph()
+
+    for vertex in vertices:
+        graph.add_vertex(vertex)
+
+    for edge in edges:
+        graph.add_edge(edge)
+
+    return graph
