@@ -85,9 +85,13 @@ def fuse_vertices(graph: Graph, vertex1: str, vertex2: str) -> Graph:
             new_graph._edges.remove(edge)
             if edge[1] != vertex1 and edge[1] != vertex2:
                 new_graph._edges.add((new_vertex, edge[1]))
+            else:
+                new_graph._edges.add((new_vertex, new_vertex))
         elif edge[1] == vertex1 or edge[1] == vertex2:
             new_graph._edges.remove(edge)
             if edge[0] != vertex1 and edge[0] != vertex2:
                 new_graph._edges.add((edge[0], new_vertex))
+            else:
+                new_graph._edges.add((new_vertex, new_vertex))
 
     return new_graph

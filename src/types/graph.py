@@ -1,10 +1,12 @@
 class Graph:
     _vertices: set[str]
     _edges: set[tuple[str, str]]
+    _is_directed: bool
 
-    def __init__(self) -> None:
+    def __init__(self, is_directed: bool = False) -> None:
         self._vertices = set()
         self._edges = set()
+        self._is_directed = is_directed
 
     def add_vertex(self, vertex: str) -> None:
         self._vertices.add(vertex)
@@ -45,6 +47,9 @@ class Graph:
 
     def get_degree(self, vertex: str) -> int:
         return len(self.get_adjacent_vertices(vertex))
+
+    def is_directed(self) -> bool:
+        return self._is_directed
 
     def __str__(self) -> str:
         return f"Vertices: {self._vertices}\nEdges: {self._edges}"
