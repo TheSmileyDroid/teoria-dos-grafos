@@ -19,7 +19,7 @@ class TestTextImporter(unittest.TestCase):
         self.assertIn("1", graph.get_vertices())
 
     def test_load_graph_from_string_single_edge(self):
-        string = "v 1\nv 2\ne 1 2\n"
+        string = "v 1;v 2;e 1 2;"
         graph = load_graph_from_string(string)
         self.assertIsInstance(graph, Graph)
         self.assertEqual(len(graph.get_vertices()), 2)

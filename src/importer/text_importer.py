@@ -1,10 +1,13 @@
+import re
 from src.types.graph import Graph
 
 
 def load_graph_from_string(string: str) -> Graph:
     graph = Graph()
 
-    lines = string.split("\n")
+    separators = "[\n;]+"
+
+    lines = re.split(separators, string)
     for line in lines:
         if line.startswith("v"):
             vertex = line[2:]
