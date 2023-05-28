@@ -33,6 +33,13 @@ def symmetric_difference(graph1: Graph, graph2: Graph) -> Graph:
         graph2.get_edges()
     )
 
+    for edge in symmetric_difference_graph._edges:
+        if (
+            edge[0] not in symmetric_difference_graph._vertices
+            or edge[1] not in symmetric_difference_graph._vertices
+        ):
+            symmetric_difference_graph._edges.remove(edge)
+
     return symmetric_difference_graph
 
 
