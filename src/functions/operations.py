@@ -42,6 +42,9 @@ def symmetric_difference(graph1: Graph, graph2: Graph) -> Graph:
         ):
             edges_for_removal.add(edge)
 
+    print(edges_for_removal)
+    print(symmetric_difference_graph._vertices)
+
     for edge in edges_for_removal:
         symmetric_difference_graph._edges.remove(edge)
 

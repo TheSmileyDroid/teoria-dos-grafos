@@ -51,5 +51,14 @@ class Graph:
     def is_directed(self) -> bool:
         return self._is_directed
 
+    def get_num_vertices(self) -> int:
+        return len(self._vertices)
+
+    def get_num_edges(self) -> int:
+        return len(self._edges)
+
+    def set_directed(self, is_directed: bool) -> None:
+        self._is_directed = is_directed
+
     def __str__(self) -> str:
         return f"Vertices: {self._vertices}\nEdges: {self._edges}"

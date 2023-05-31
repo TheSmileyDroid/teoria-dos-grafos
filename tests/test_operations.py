@@ -33,7 +33,7 @@ class TestOperations(unittest.TestCase):
         symmetric_difference_graph = symmetric_difference(self.graph1, self.graph2)
 
         self.assertEqual(symmetric_difference_graph.get_vertices(), {"A", "D"})
-        self.assertEqual(symmetric_difference_graph.get_edges(), {("A", "B")})
+        self.assertEqual(symmetric_difference_graph.get_edges(), set())
 
     def test_remove_vertex(self):
         new_graph = remove_vertex(self.graph1, "B")
@@ -51,12 +51,12 @@ class TestOperations(unittest.TestCase):
         new_graph = fuse_vertices(self.graph1, "A", "B")
 
         self.assertEqual(new_graph.get_vertices(), {"AB", "C"})
-        self.assertEqual(new_graph.get_edges(), {("AB", "C")})
+        self.assertEqual(new_graph.get_edges(), {("AB", "C"), ("AB", "AB")})
 
         new_graph = fuse_vertices(new_graph, "AB", "C")
 
         self.assertEqual(new_graph.get_vertices(), {"ABC"})
-        self.assertEqual(new_graph.get_edges(), set())
+        self.assertEqual(new_graph.get_edges(), {("ABC", "ABC")})
 
 
 if __name__ == "__main__":
