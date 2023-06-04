@@ -41,7 +41,7 @@ class Graph(GraphABC):
 
         raise ValueError(f"Edge {name} does not exist in graph.")
 
-    def get_neighbours(self, vertex: str) -> set[str]:
+    def get_neighbors(self, vertex: str) -> set[str]:
         neighbours = set()
         for edge in self._edges:
             if edge[0] == vertex:
@@ -51,7 +51,7 @@ class Graph(GraphABC):
         return neighbours
 
     def get_degree(self, vertex: str) -> int:
-        return len(self.get_neighbours(vertex))
+        return len(self.get_neighbors(vertex))
 
     def is_directed(self) -> bool:
         return self._is_directed
@@ -74,7 +74,7 @@ class Graph(GraphABC):
 
             if vertex not in visited:
                 visited.add(vertex)
-                for adjacent in self.get_neighbours(vertex):
+                for adjacent in self.get_neighbors(vertex):
                     stack.append(adjacent)
 
         return len(visited) == len(self._vertices)

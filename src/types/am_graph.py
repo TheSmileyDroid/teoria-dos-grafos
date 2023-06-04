@@ -1,7 +1,7 @@
-from src.types.abc_graph import Graph
+from src.types.abc_graph import GraphABC
 
 
-class AMGraph(Graph):
+class AMGraph(GraphABC):
     def __init__(self, num_vertices: int, directed: bool = False):
         super().__init__()
         self.matrix = [[0 for _ in range(num_vertices)]
@@ -24,7 +24,7 @@ class AMGraph(Graph):
                     edges.add((str(i), str(j)))
         return edges
 
-    def get_neighbours(self, vertex: str) -> set[str]:
+    def get_neighbors(self, vertex: str) -> set[str]:
         neighbours = set()
         for i in range(len(self.matrix)):
             if self.matrix[int(vertex)][i] == 1:
@@ -48,4 +48,4 @@ class AMGraph(Graph):
         raise ValueError(f"Edge {edge} does not exist in graph.")
 
     def get_degree(self, vertex: str) -> int:
-        return len(self.get_neighbours(vertex))
+        return len(self.get_neighbors(vertex))

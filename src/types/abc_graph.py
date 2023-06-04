@@ -11,7 +11,7 @@ class GraphABC(ABC):
         pass
 
     @abstractmethod
-    def get_neighbours(self, vertex: str) -> set:
+    def get_neighbors(self, vertex: str) -> set:
         pass
 
     @abstractmethod
