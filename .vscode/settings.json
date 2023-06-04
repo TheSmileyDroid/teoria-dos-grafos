@@ -1,19 +1,11 @@
 {
   "python.analysis.typeCheckingMode": "basic",
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter"
+    "editor.defaultFormatter": "ms-python.autopep8"
   },
   "python.formatting.provider": "none",
-  "python.testing.unittestArgs": [
-    "-v",
-    "-s",
-    "./tests",
-    "-p",
-    "test_*.py"
-  ],
+  "python.testing.unittestArgs": ["-v", "-s", "./tests", "-p", "test_*.py"],
   "python.testing.pytestEnabled": false,
   "python.testing.unittestEnabled": true,
-  "python.analysis.extraPaths": [
-    "./src/types"
-  ]
+  "python.analysis.extraPaths": ["./src/types"]
 }

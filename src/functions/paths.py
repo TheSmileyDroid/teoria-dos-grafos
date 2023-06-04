@@ -18,7 +18,7 @@ def shortest_path(graph: Graph, start: str, end: str) -> list[str]:
             return path
 
         if vertex not in visited:
-            for adjacent in graph.get_adjacent_vertices(vertex):
+            for adjacent in graph.get_neighbours(vertex):
                 new_path = list(path)
                 new_path.append(adjacent)
                 queue.append(new_path)

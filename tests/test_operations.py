@@ -12,30 +12,33 @@ from src.functions.operations import (
 
 
 class TestOperations(unittest.TestCase):
-    def setUp(self):
-        self.graph1 = load_graph_from_string("v A\nv B\nv C\ne A B\ne B C")
+    def setUp(self) -> None:
+        self.graph1: Graph = load_graph_from_string(
+            "v A\nv B\nv C\ne A B\ne B C")
 
-        self.graph2 = load_graph_from_string("v B\nv C\nv D\ne B C")
+        self.graph2: Graph = load_graph_from_string("v B\nv C\nv D\ne B C")
 
-    def test_union(self):
+    def test_union(self) -> None:
         union_graph = union(self.graph1, self.graph2)
 
         self.assertEqual(union_graph.get_vertices(), {"A", "B", "C", "D"})
         self.assertEqual(union_graph.get_edges(), {("A", "B"), ("B", "C")})
 
-    def test_intersection(self):
+    def test_intersection(self) -> None:
         intersection_graph = intersection(self.graph1, self.graph2)
 
         self.assertEqual(intersection_graph.get_vertices(), {"B", "C"})
         self.assertEqual(intersection_graph.get_edges(), {("B", "C")})
 
-    def test_symmetric_difference(self):
-        symmetric_difference_graph = symmetric_difference(self.graph1, self.graph2)
+    def test_symmetric_difference(self) -> None:
+        symmetric_difference_graph = symmetric_difference(
+            self.graph1,
+            self.graph2)
 
         self.assertEqual(symmetric_difference_graph.get_vertices(), {"A", "D"})
         self.assertEqual(symmetric_difference_graph.get_edges(), set())
 
-    def test_remove_vertex(self):
+    def test_remove_vertex(self) -> None:
         new_graph = remove_vertex(self.graph1, "B")
 
         self.assertEqual(new_graph.get_vertices(), {"A", "C"})

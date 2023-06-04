@@ -1,4 +1,7 @@
-class Graph:
+from src.types.abc_graph import GraphABC
+
+
+class Graph(GraphABC):
     _vertices: set[str]
     _edges: set[tuple[str, str]]
     _is_directed: bool
@@ -13,6 +16,10 @@ class Graph:
 
     def add_edge(self, edge: tuple[str, str]) -> None:
         self._edges.add(edge)
+        if edge[0] not in self._vertices:
+            self.add_vertex(edge[0])
+        if edge[1] not in self._vertices:
+            self.add_vertex(edge[1])
 
     def get_vertices(self) -> set[str]:
         return self._vertices
@@ -34,19 +41,17 @@ class Graph:
 
         raise ValueError(f"Edge {name} does not exist in graph.")
 
-    def get_adjacent_vertices(self, vertex: str) -> set[str]:
-        adjacent_vertices: set[str] = set()
-
+    def get_neighbours(self, vertex: str) -> set[str]:
+        neighbours = set()
         for edge in self._edges:
             if edge[0] == vertex:
-                adjacent_vertices.add(edge[1])
+                neighbours.add(edge[1])
             elif edge[1] == vertex:
-                adjacent_vertices.add(edge[0])
-
-        return adjacent_vertices
+                neighbours.add(edge[0])
+        return neighbours
 
     def get_degree(self, vertex: str) -> int:
-        return len(self.get_adjacent_vertices(vertex))
+        return len(self.get_neighbours(vertex))
 
     def is_directed(self) -> bool:
         return self._is_directed
@@ -59,6 +64,20 @@ class Graph:
 
     def set_directed(self, is_directed: bool) -> None:
         self._is_directed = is_directed
+
+    def is_connected(self) -> bool:
+        visited = set()
+        stack = [list(self._vertices)[0]]
+
+        while stack:
+            vertex = stack.pop()
+
+            if vertex not in visited:
+                visited.add(vertex)
+                for adjacent in self.get_neighbours(vertex):
+                    stack.append(adjacent)
+
+        return len(visited) == len(self._vertices)
 
     def __str__(self) -> str:
         return f"Vertices: {self._vertices}\nEdges: {self._edges}"

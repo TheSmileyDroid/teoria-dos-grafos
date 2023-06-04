@@ -17,7 +17,9 @@ def intersection(graph1: Graph, graph2: Graph) -> Graph:
         graph2.get_vertices()
     )
 
-    intersection_graph._edges = graph1.get_edges().intersection(graph2.get_edges())
+    intersection_graph._edges = graph1.get_edges().intersection(
+        graph2.get_edges()
+    )
 
     return intersection_graph
 
@@ -25,11 +27,11 @@ def intersection(graph1: Graph, graph2: Graph) -> Graph:
 def symmetric_difference(graph1: Graph, graph2: Graph) -> Graph:
     symmetric_difference_graph = Graph()
 
-    symmetric_difference_graph._vertices = graph1.get_vertices().symmetric_difference(
+    symmetric_difference_graph._vertices = graph1.get_vertices().symmetric_difference(  # noqa E501
         graph2.get_vertices()
     )
 
-    symmetric_difference_graph._edges = graph1.get_edges().symmetric_difference(
+    symmetric_difference_graph._edges = graph1.get_edges().symmetric_difference(  # noqa E501
         graph2.get_edges()
     )
 
@@ -110,3 +112,17 @@ def fuse_vertices(graph: Graph, vertex1: str, vertex2: str) -> Graph:
                 new_graph._edges.add((new_vertex, new_vertex))
 
     return new_graph
+
+
+def intersecting(graph1: Graph, graph2: Graph) -> Graph:
+    intersecting_graph = Graph()
+
+    intersecting_graph._vertices = graph1.get_vertices().intersection(
+        graph2.get_vertices()
+    )
+
+    intersecting_graph._edges = graph1.get_edges().intersection(
+        graph2.get_edges()
+    )
+
+    return intersecting_graph

@@ -19,7 +19,8 @@ class TestShortestPath(unittest.TestCase):
         self.assertEqual(shortest_path(self.graph, "A", "C"), ["A", "B", "C"])
         self.assertEqual(shortest_path(self.graph, "A", "D"), ["A", "D"])
         self.assertEqual(shortest_path(self.graph, "B", "D"), ["B", "A", "D"])
-        self.assertEqual(shortest_path(self.graph, "D", "C"), ["D", "A", "B", "C"])
+        self.assertEqual(shortest_path(
+            self.graph, "D", "C"), ["D", "A", "B", "C"])
         self.assertEqual(shortest_path(self.graph, "A", "E"), [])
 
     def test_shortest_path_single_vertex(self) -> None:
