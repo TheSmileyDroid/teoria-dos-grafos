@@ -12,6 +12,8 @@ class Graph(GraphABC):
         self._is_directed = is_directed
 
     def add_vertex(self, vertex: str) -> None:
+        if vertex == 'null':
+            vertex = str(len(self._vertices))
         self._vertices.add(vertex)
 
     def add_edge(self, edge: tuple[str, str]) -> None:
@@ -21,11 +23,27 @@ class Graph(GraphABC):
         if edge[1] not in self._vertices:
             self.add_vertex(edge[1])
 
+    def remove_vertex(self, vertex_name: str) -> None:
+        self._vertices.remove(self.get_vertex(vertex_name))
+
+        for edge in self.get_edges_from_vertex(vertex_name):
+            self.remove_edge(edge)
+
+    def remove_edge(self, edge: tuple[str, str]) -> None:
+        self._edges.remove(self.get_edge(edge))
+
     def get_vertices(self) -> set[str]:
         return self._vertices
 
     def get_edges(self) -> set[tuple[str, str]]:
         return self._edges
+
+    def get_edges_from_vertex(self, vertex: str) -> set[tuple[str, str]]:
+        edges = set()
+        for edge in self._edges:
+            if edge[0] == vertex or edge[1] == vertex:
+                edges.add(edge)
+        return edges
 
     def get_vertex(self, name: str) -> str:
         for vertex in self._vertices:
