@@ -117,4 +117,4 @@ class AMGraph(GraphABC):
         return len(self.matrix)
 
     def get_num_edges(self) -> int:
-        return sum([sum(row) for row in self.matrix])
+        return sum([sum(row) for row in self.matrix]) // 2

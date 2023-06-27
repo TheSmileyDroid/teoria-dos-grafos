@@ -7,8 +7,8 @@ def is_tree(graph: GraphABC) -> bool:
     if not graph.is_connected():
         return False
 
-    n = len(graph.get_vertices())
-    m = len(graph.get_edges())
+    n = graph.get_num_vertices()
+    m = graph.get_num_edges()
     if m != n - 1:
         return False
 

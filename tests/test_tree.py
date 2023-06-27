@@ -57,6 +57,10 @@ class TestTree(unittest.TestCase):
         graph.add_edge(('B', 'C'))
         graph.add_edge(('C', 'D'))
         graph.add_edge(('D', 'E'))
+        self.assertTrue(graph.is_connected())
+        self.assertEqual(graph.get_num_edges(), 4)
+        self.assertEqual(graph.get_num_vertices(), 5)
+
         self.assertTrue(is_tree(graph))
 
     def test_distance_between_vertices(self):
@@ -98,7 +102,7 @@ class TestTree(unittest.TestCase):
 
         # Test the center of a tree with an even number of vertices
         graph.remove_vertex('E')
-        self.assertEqual(tree_center(graph), ['B', 'C'])
+        self.assertEqual(set(tree_center(graph)), set(['B', 'C']))
 
         # Test the center of a disconnected graph
         graph.add_vertex('F')
