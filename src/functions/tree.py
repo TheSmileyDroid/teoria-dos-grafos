@@ -190,6 +190,8 @@ def central_tree(graph: Graph) -> Graph:
 
     for tree in trees:
         distance = maxi_distance(tree, trees)
+        if distance == 0:
+            return tree
         if distance < maxi:
             maxi = distance
             center = tree
