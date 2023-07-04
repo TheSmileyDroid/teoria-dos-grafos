@@ -5,6 +5,7 @@ class Graph(GraphABC):
     _vertices: set[str]
     _edges: set[tuple[str, str]]
     _is_directed: bool
+    _edge_weights: dict[tuple[str, str], int]
 
     def __init__(self, is_directed: bool = False) -> None:
         self._vertices = set()
@@ -22,6 +23,12 @@ class Graph(GraphABC):
             self.add_vertex(edge[0])
         if edge[1] not in self._vertices:
             self.add_vertex(edge[1])
+
+    def add_edge_weight(self, edge: tuple[str, str], weight: int) -> None:
+        self._edge_weights[edge] = weight
+
+    def get_edge_weight(self, edge: tuple[str, str]) -> int:
+        return self._edge_weights[edge] if edge in self._edge_weights else 1
 
     def remove_vertex(self, vertex_name: str) -> None:
         self._vertices.remove(self.get_vertex(vertex_name))

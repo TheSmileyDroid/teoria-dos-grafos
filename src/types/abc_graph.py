@@ -11,6 +11,14 @@ class GraphABC(ABC):
         pass
 
     @abstractmethod
+    def add_edge_weight(self, edge: tuple[str, str], weight: int) -> None:
+        pass
+
+    @abstractmethod
+    def get_edge_weight(self, edge: tuple[str, str]) -> int:
+        pass
+
+    @abstractmethod
     def get_neighbors(self, vertex: str) -> set:
         pass
 
@@ -44,6 +52,14 @@ class GraphABC(ABC):
 
     @abstractmethod
     def add_edge(self, edge: tuple[str, str]) -> None:
+        pass
+
+    @abstractmethod
+    def remove_vertex(self, vertex: str) -> None:
+        pass
+
+    @abstractmethod
+    def remove_edge(self, edge: tuple[str, str]) -> None:
         pass
 
     @abstractmethod
