@@ -1,4 +1,4 @@
-from src.types.graph import Graph
+from src.structs.graph import Graph
 
 
 def has_hamiltonian_cycle(graph: Graph):

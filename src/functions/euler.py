@@ -1,4 +1,4 @@
-from src.types.graph import Graph
+from src.structs.graph import Graph
 
 
 def is_euler_graph(graph: Graph) -> bool:

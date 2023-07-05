@@ -1,5 +1,5 @@
 import unittest
-from src.types.graph import Graph
+from src.structs.graph import Graph
 from src.functions.subgraph import (
     is_subgraph,
     is_graph_vertex_disjoint,

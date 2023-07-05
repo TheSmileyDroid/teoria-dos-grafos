@@ -1,5 +1,5 @@
 from queue import Queue
-from src.types.graph import Graph
+from src.structs.graph import Graph
 
 
 def view_pydot(graph: Graph):

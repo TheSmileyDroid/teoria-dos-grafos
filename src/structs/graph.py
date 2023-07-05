@@ -1,4 +1,4 @@
-from src.types.abc_graph import GraphABC
+from src.structs.abc_graph import GraphABC
 
 
 class Graph(GraphABC):
@@ -11,6 +11,7 @@ class Graph(GraphABC):
         self._vertices = set()
         self._edges = set()
         self._is_directed = is_directed
+        self._edge_weights = {}
 
     def add_vertex(self, vertex: str) -> None:
         if vertex == 'null':
@@ -29,6 +30,9 @@ class Graph(GraphABC):
 
     def get_edge_weight(self, edge: tuple[str, str]) -> int:
         return self._edge_weights[edge] if edge in self._edge_weights else 1
+
+    def get_edge_weights(self) -> dict[tuple[str, str], int]:
+        return self._edge_weights
 
     def remove_vertex(self, vertex_name: str) -> None:
         self._vertices.remove(self.get_vertex(vertex_name))
@@ -105,4 +109,4 @@ class Graph(GraphABC):
         return len(visited) == len(self._vertices)
 
     def __str__(self) -> str:
-        return f"Vertices: {self._vertices}\nEdges: {self._edges}"
+        return f"Vertices: {self._vertices}\nEdges: {self._edges}\nDirected: {self._is_directed}"

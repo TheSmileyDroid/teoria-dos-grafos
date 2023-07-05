@@ -1,8 +1,8 @@
 from typing import Generator
 from src.functions.paths import shortest_path
 from src.importer.text_importer import load_graph_from_set
-from src.types.graph import Graph
-from src.types.abc_graph import GraphABC
+from src.structs.graph import Graph
+from src.structs.abc_graph import GraphABC
 from queue import Queue
 
 
@@ -155,7 +155,7 @@ def find_spanning_tree(graph: Graph) -> Generator[Graph, None, None]:
 
     chords: list[tuple[str, str]] = []
     for edge in graph.get_edges():
-        if set(edge) not in map(set, tree0.get_edges()):
+        if set(edge) not in map(set, tree0.get_edges()):  # type: ignore
             chords.append(edge)
 
     # print('chords: ', chords)

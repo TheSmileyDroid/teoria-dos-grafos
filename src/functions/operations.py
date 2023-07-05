@@ -1,4 +1,4 @@
-from src.types.graph import Graph
+from src.structs.graph import Graph
 
 
 def union(graph1: Graph, graph2: Graph) -> Graph:

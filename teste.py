@@ -1,13 +1,12 @@
 from src.functions.paths import shortest_path
-from src.types.graph import Graph
+from src.structs.graph import Graph
 from src.importer.text_importer import load_graph_from_set
 from typing import Generator
 from src.exporter.dot import export_to_pydot
-from IPython.display import Image, display
 
 
 def view_pydot(pdot):
-    export_to_pydot(pdot).write_png('./graph.png')
+    export_to_pydot(pdot).write_png('./graph.png')  # type: ignore
 
 
 def find_first_spanning_tree(graph: Graph) -> Graph:

@@ -1,4 +1,4 @@
-from src.types.graph import Graph
+from src.structs.graph import Graph
 
 
 def shortest_path(graph: Graph, start: str, end: str) -> list[str]:

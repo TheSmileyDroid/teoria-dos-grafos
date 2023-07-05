@@ -1,6 +1,6 @@
 import unittest
-from src.types.am_graph import AMGraph
-from src.types.graph import Graph
+from src.structs.am_graph import AMGraph
+from src.structs.graph import Graph
 from src.functions.tree import (
     is_tree,
     distance_between_vertices,

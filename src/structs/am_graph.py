@@ -1,4 +1,4 @@
-from src.types.abc_graph import GraphABC
+from src.structs.abc_graph import GraphABC
 
 
 class AMGraph(GraphABC):

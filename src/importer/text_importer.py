@@ -1,5 +1,5 @@
 import re
-from src.types.graph import Graph
+from src.structs.graph import Graph
 
 
 def load_graph_from_string(string: str) -> Graph:
@@ -30,5 +30,15 @@ def load_graph_from_set(vertices: set[str], edges: set[tuple[str, str]]) -> Grap
 
     for edge in edges:
         graph.add_edge(edge)
+
+    return graph
+
+
+def load_from_edge_weight(edge_weight: dict[tuple[str, str], int]) -> Graph:
+    graph = Graph()
+
+    for edge in edge_weight:
+        graph.add_edge(edge)
+        graph.add_edge_weight(edge, edge_weight[edge])
 
     return graph

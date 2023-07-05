@@ -1,5 +1,5 @@
 import unittest
-from src.types.graph import Graph
+from src.structs.graph import Graph
 from src.importer.text_importer import load_graph_from_string
 from src.functions.operations import (
     fuse_vertices,
