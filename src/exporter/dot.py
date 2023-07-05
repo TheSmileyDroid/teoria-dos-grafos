@@ -10,10 +10,13 @@ def export_to_pydot(graph: Graph) -> pydot.Dot:
         concentrate="true",
         nodesep="0.1",
         layout="sfdp",
-        beautify="true",
+        beautify="false",
     )
 
-    max_weigth = max(graph.get_edge_weights().values())
+    max_weigth = 1
+
+    if len(graph.get_edge_weights().values()) != 0:
+        max_weigth = max(graph.get_edge_weights().values())
     if max_weigth < 1:
         max_weigth = 1
 
