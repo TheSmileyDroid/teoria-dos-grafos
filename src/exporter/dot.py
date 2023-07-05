@@ -26,7 +26,7 @@ def export_to_pydot(graph: Graph) -> pydot.Dot:
     for edge in graph.get_edges():
         peso = float(graph.get_edge_weight(edge)**2)
         # keep size between 1 and 6
-        peso = (((peso - 1) * (6 - 1)) / (max_weigth**2 - 1)) + 1
+        peso = (((peso - 1) * (6 - 1)) / (max_weigth**2)) + 1
 
         dot_edge = pydot.Edge(edge[0], edge[1], penwidth=str(peso))
         dot_graph.add_edge(dot_edge)
