@@ -24,6 +24,7 @@ class Graph(GraphABC):
             self.add_vertex(edge[0])
         if edge[1] not in self._vertices:
             self.add_vertex(edge[1])
+        self.add_edge_weight(edge, 1)
 
     def add_edge_weight(self, edge: tuple[str, str], weight: int) -> None:
         self._edge_weights[edge] = weight
